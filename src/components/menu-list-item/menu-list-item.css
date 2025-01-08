@@ -1,0 +1,42 @@
+.li {
+  padding: 0;
+}
+
+.controls {
+  padding: 5px;
+  width: 140px;
+}
+
+.controls .btn {
+  padding: 5;
+  width: 30px;
+/*   font-size: 14px;
+  font-weight: bold; */
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+span {
+  font-size: 12px;
+  text-align: center;
+}
+
+.todo-list-item {
+  font-size: 1em;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.cancel {
+  text-decoration: line-through;
+  color: red;
+}
+
+.form-control {
+  text-align: center;
+}
