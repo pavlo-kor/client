@@ -1,28 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
+import './menu-filter.css';
 
-import './menu-filter.css'
+const MenuFilter = ({ filter, onFilterChange }) => {
 
-export default class MenuFilter extends Component {
+  const buttons = [
+    { name: 'all', label: 'All' },
+    { name: 'main', label: 'Main' },
+    { name: 'side', label: 'Side' },
+    { name: 'drinks', label: 'Drinks' }
+  ];
 
-  render() {
-    return (
-      <div className="btn-group">
-        <button 
-          className="btn btn-light"
-          type="button">
-            Main
+  return (
+    <div className="btn-group">
+      {buttons.map(({ name, label }) => (
+        <button
+          key={name}
+          type="button"
+          className={`btn ${filter === name ? 'btn-primary' : 'btn-outline-primary'}`}
+          onClick={() => onFilterChange(name)}
+        >
+          {label}
         </button>
-        <button 
-          className="btn btn-light"
-          type="button">
-            Side
-        </button>
-        <button 
-          className="btn btn-light"
-          type="button">
-            Drinks
-        </button>
-      </div>
-    )
-  }
-}
+      ))}
+    </div>
+  );
+};
+
+export default MenuFilter;

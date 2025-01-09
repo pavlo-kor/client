@@ -16,11 +16,11 @@ const MenuListItem = (props) => {
             <span>{desc}</span>
           </div>
           <div class="input-group mb-1">
-            <button class="btn btn-danger" type="button">-</button>
+            <button className="btn btn-danger" type="button">-</button>
             <input  type="text" 
-                    class="form-control" 
+                    className="form-control" 
                     placeholder="0" />
-            <button class="btn btn-success" type="button">+</button>
+            <button className="btn btn-success" type="button">+</button>
           </div>
         </div>
       </li>
