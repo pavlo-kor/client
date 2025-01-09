@@ -1,14 +1,19 @@
 import React from 'react';
-
 import TodoListItem from '../todo-list-item';
 import './todo-list.css';
 
-const TodoList = ({data}) => {
+const TodoList = ({ data,
+                    onToggleDone,
+                    onToggleCancel }) => {
 
   const elements = data.map(item => {
     const {id, ...itemProps} = item;
     return (
-      <TodoListItem key={id} {...itemProps}></TodoListItem>
+      <TodoListItem 
+        key={id} 
+        {...itemProps}
+      onToggleDone={() => onToggleDone(id)}
+      onToggleCancel={() => onToggleCancel(id)}></TodoListItem>
     )
   })
 

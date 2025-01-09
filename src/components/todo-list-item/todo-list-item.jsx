@@ -5,35 +5,18 @@ import './todo-list-item.css';
 
 export default class TodoListItem extends Component {
 
-  state = {
-    done: false,
-    cancel: false, 
-  }
-
-  onLabelClick = () => {
-    this.setState(({done}) => {
-      return {
-        done: !done
-      }
-    });
-  }
-
-  cancelOrder = () => {
-    this.setState(({cancel}) => {
-      return {
-        cancel: !cancel
-      } 
-    })
-  }
   render() {
 
-    const { done, cancel } = this.state;
+    const { name, 
+            done, 
+            cancel, 
+            onToggleDone, 
+            onToggleCancel } = this.props;
 
     let classNames = 'todo-list-item';
     if (done) {
       classNames += ' done'
     }
-
     if (cancel) {
       classNames += ' cancel'
     }
@@ -43,16 +26,16 @@ export default class TodoListItem extends Component {
         <li className="list-group-item d-flex justify-content-between">
           <button type="button"
                   className="btn btn-outline-danger btn-sm float-right"
-                  onClick={this.cancelOrder}>
+                  onClick={onToggleCancel}>
                   Cancel
           </button>
           <span className={classNames}
                 >
-                {this.props.name}
+                {name}
           </span>
           <button type="button"
                   className="btn btn-outline-success btn-sm float-right"
-                  onClick={this.onLabelClick}>
+                  onClick={onToggleDone}>
                   Ready
           </button>
         </li>
