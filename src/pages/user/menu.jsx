@@ -12,15 +12,38 @@ export default class Menu extends Component {
             {name: 'Borsch', desc: 'A sour soup, made with meat stock, vegetables and seasonings', id: 2},
             {name: 'Fisting', desc: '300$', id: 3},
             {name: 'Carbonara', desc: 'A pasta dish made with fatty cured pork, hard cheese, eggs', id: 4}
-        ]
+        ],
+        term: ''
     } 
+
+    onSearchChange = (term) => {
+        this.setState({term})
+    }
+
+    search(items, term) {
+        if (term.length === 0) {
+            return items;
+        }
+
+        return items.filter((item) => {
+            return item.name
+                .toLowerCase()
+                .indexOf(term.toLowerCase()) >= 0;
+        });
+    }
     render() {
+        const {menuData, term} = this.state;
+        const visibleItems = this.search(menuData, term);
+
         return (
             <div>
                 <h2>Menu</h2>
-                <SearchPanel></SearchPanel>
+                <SearchPanel
+                    term={term}
+                    onSearchChange={this.onSearchChange}>                    
+                </SearchPanel>
                 <MenuFilter></MenuFilter>
-                <MenuList data={this.state.menuData}></MenuList>
+                <MenuList data={visibleItems}></MenuList>
             </div>
         );
     }
